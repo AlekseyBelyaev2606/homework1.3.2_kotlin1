@@ -11,7 +11,7 @@ fun userCom(typeCard: String, transfer: Int, sumMonth: Int
         "Visa", "Мир" -> if (transfer * 0.075 > 35) transfer * 0.075 else 35
         else -> 0.0
     }
-    return fee as Int
+    return fee.toInt()
 }
 
 
