@@ -2,6 +2,7 @@ fun main() {
     val limits = limitTransfer(50)
     val commission = userCom("VK Pay", 50, 0)
     val result = limits + commission
+    println(result)
 }
 
 fun userCom(typeCard: String, transfer: Int, sumMonth: Int
