@@ -1,127 +1,121 @@
 import junit.framework.Assert.assertEquals
 import org.junit.Test
-import java.time.Month
 
 class MainKtTest {
-    @Test
-    fun main(){
-
-    }
-
 
     @Test
-    fun firstLimitDayTransfer(transfer: Int) {
+    fun firstLimitDayTransfer() {
         var transfer: Int = 300
         var sumMonth = 0
         var sumDay = 0
         var sumTransfer = 0
 
-        val result = limitTransfer(transfer)
+        val result = limitTransfer(transfer, sumMonth, sumDay, sumTransfer)
 
         assertEquals(transfer, result)
     }
 
     @Test
-    fun secondLimitDayTransfer(transfer: Int) {
+    fun secondLimitDayTransfer() {
         var transfer: Int = 300
         var sumMonth = 150000
         var sumDay = 0
         var sumTransfer = 0
 
-        val result = limitTransfer(transfer)
+        val result = limitTransfer(transfer, sumMonth, sumDay, sumTransfer)
 
-        assertEquals(transfer, result)
+        assertEquals(0, result)
     }
 
     @Test
-    fun threeLimitDayTransfer(transfer: Int) {
+    fun threeLimitDayTransfer() {
         var transfer: Int = 300
         var sumMonth = 0
         var sumDay = 15000
         var sumTransfer = 0
 
-        val result = limitTransfer(transfer)
+        val result = limitTransfer(transfer, sumMonth, sumDay, sumTransfer)
 
-        assertEquals(transfer, result)
+        assertEquals(0, result)
     }
 
     @Test
-    fun fourlimitDayTransfer(transfer: Int) {
-        var transfer: Int = 300
-        var sumMonth = 0
-        var sumDay = 0
-        var sumTransfer = 300
-
-        val result = limitTransfer(transfer)
-
-        assertEquals(transfer, result)
-    }
-
-    @Test
-    fun fiveLimitDayTransfer(transfer: Int) {
-        var transfer: Int = 300
-        var sumMonth = 0
-        var sumDay = 0
-        var sumTransfer = 300
-
-        val result = limitTransfer(transfer)
-
-        assertEquals(transfer, result)
-    }
-
-
-    @Test
-    fun masterCom(typeCard: String, transfer: Int, sumMonth: Int) {
+    fun fourlimitDayTransfer() {
         var transfer = 300
-        var typeCard = "Master"
         var sumMonth = 0
+        var sumDay = 0
+        var sumTransfer = 300
 
-        val result = userCom(typeCard, transfer, sumMonth)
+        val result = limitTransfer(transfer, sumMonth, sumDay, sumTransfer)
+
+        assertEquals(600, result)
+    }
+
+    @Test
+    fun fiveLimitDayTransfer() {
+        var transfer: Int = 300
+        var sumMonth = 150000
+        var sumDay = 15000
+        var sumTransfer = 300
+
+        val result = limitTransfer(transfer, sumMonth, sumDay, sumTransfer)
 
         assertEquals(300, result)
     }
 
+
     @Test
-    fun maestroCom(typeCard: String, transfer: Int, sumMonth: Int) {
-        var transfer = 300
+    fun masterCom() {
+        var transfer = 500
+        var typeCard = "MasterCard"
+        var sumMonth = 0
+
+        val result = userCom(typeCard, transfer, sumMonth)
+
+        assertEquals(0, result)
+    }
+
+    @Test
+    fun maestroCom() {
+        var transfer = 200
         var typeCard = "Maestro"
         var sumMonth = 0
 
         val result = userCom(typeCard, transfer, sumMonth)
 
-        assertEquals(300, result)
+        assertEquals(21, result)
     }
 
     @Test
-    fun worldCom(typeCard: String, transfer: Int, sumMonth: Int) {
-        var transfer = 300
+    fun worldCom() {
+        var transfer = 500
         var typeCard = "Мир"
         var sumMonth = 0
 
         val result = userCom(typeCard, transfer, sumMonth)
 
-        assertEquals(300, result)
+        assertEquals(37, result)
     }
 
     @Test
-    fun visaCom(typeCard: String, transfer: Int, sumMonth: Int) {
-        var transfer = 300
+    fun visaCom() {
+        var transfer = 100
         var typeCard = "Visa"
         var sumMonth = 0
 
         val result = userCom(typeCard, transfer, sumMonth)
 
-        assertEquals(300, result)
+        assertEquals(35, result)
     }
 
     @Test
-    fun vkpayUserCom(typeCard: String, transfer: Int, sumMonth: Int) {
+    fun vkpayUserCom() {
         var transfer = 1000
         var typeCard = "VK Pay"
         var sumMonth = 0
 
         val result = userCom(typeCard, transfer, sumMonth)
 
-        assertEquals(1000, result)
+        assertEquals(0, result)
     }
 }

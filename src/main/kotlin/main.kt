@@ -1,5 +1,5 @@
 fun main() {
-    val limits = limitTransfer(50)
+    val limits = limitTransfer(50, 0, 0, 0)
     val commission = userCom("VK Pay", 50, 0)
     val result = limits + commission
     println(result)
@@ -16,16 +16,18 @@ fun userCom(typeCard: String, transfer: Int, sumMonth: Int
 }
 
 
-fun limitTransfer(transfer: Int): Int {
-    var transfer: Int = 0
-    var sumMonth = transfer++
-    var sumDay = transfer++
-    var sumTransfer = 0
-    when {
-        sumTransfer < 40000 && sumDay < 15000 -> sumTransfer = transfer++
-        else -> println("Вы превысили доступные лимиты")
+fun limitTransfer(
+    transfer: Int,
+    sumMonth: Int = 0,
+    sumDay: Int = 0,
+    sumTransfer: Int
+): Int {
+    var a = when {
+        (sumMonth < 40000 && sumDay < 15000) -> transfer
+        else -> 0
     }
-    return sumTransfer
+
+    return sumTransfer + a
 }
 
 
